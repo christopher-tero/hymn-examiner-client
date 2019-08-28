@@ -9,9 +9,35 @@ import Hymn from './Components/HymnList/Hymn'
 import Footer from './Components/Footer/Footer'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
+const url = "http://localhost:3000/"
 
 export default class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      resources: undefined,
+      hymns: undefined,
+    }
+  }
+
+  ComponentDidMount = () => {
+    this.fetchData();
+  }
+
+  fetchData = () => {
+    fetch(url + "resources")
+      .then(response => response.json())
+      .then(result => this.setState({resources: result}))
+      .catch(error => console.error(error))
+    fetch(url + "hymns")
+      .then(response => response.json())
+      .then(result => this.setState({hymns: result}))
+      .catch(error => console.error(error))
+  }
+
   render() {
+    console.log(this.state.resources ? this.state.resources : "unavailable")
     return (
       <div className="App">
         <Router>
@@ -20,7 +46,10 @@ export default class App extends Component {
             <Route path="/home" exact component={Home} />
             <Route path="/hymns" exact component={HymnList} />
             <Route path="/hymns/:id" component={Hymn} />
-            <Route path="/resources" component={Resources} />
+            <Route path="/resources" component={this.state.resources ? (props) => <Resources {...props}
+              resources={this.state.resources} /> : ""
+            } />
+
             <Route path="/about" component={About} />
           </Switch>
           <Footer />

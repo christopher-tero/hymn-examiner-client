@@ -6,11 +6,11 @@ export default function Header() {
   return(
     <div id="header">
       <p id="header-logo">Hymn Examiner</p>
-      <span class="header-links">
-        <Link class="link" to='/home'>Home</Link>
-        <Link class="link" to='/hymns'>Hymns</Link>
-        <Link class="link" to='/resources'>Resources</Link>
-        <Link class="link" to='/about'>About</Link>
+      <span className="header-links">
+        <Link className="link" to='/home'>Home</Link>
+        <Link className="link" to='/hymns'>Hymns</Link>
+        <Link className="link" to='/resources'>Resources</Link>
+        <Link className="link" to='/about'>About</Link>
       </span>
     </div>
   )
