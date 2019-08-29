@@ -46,12 +46,15 @@ export default class App extends Component {
           <Header />
           <Switch className="pages">
             <Route path="/home" exact component={Home} />
-            <Route path="/hymns" exact component={HymnList} />
-            <Route path="/hymns/:id" component={Hymn} />
+            <Route path="/hymns" exact component={this.state.resources ? (props) => <HymnList {...props}
+              hymns={this.state.hymns} /> : ""
+            } />
+            <Route path="/hymns/:id" component={this.state.resources ? (props) => <HymnList {...props}
+              hymns={this.state.hymns} /> : ""
+            } />
             <Route path="/resources" component={this.state.resources ? (props) => <Resources {...props}
               resources={this.state.resources} /> : ""
             } />
-
             <Route path="/about" component={About} />
           </Switch>
           <Footer />
