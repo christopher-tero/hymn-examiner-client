@@ -1,12 +1,13 @@
 import React from 'react'
 
 export default function Resources(props) {
-  const listResources = props.resources.map((resource) => {
-    console.log(props)
-    return(
-      <p></p>
-    )
-  })
+  const listResources = console.log(props.resources);
+  // const listResources = props.resources.map((resource) => {
+  //   console.log(props)
+  //   return(
+  //     <p>{props}</p>
+  //   )
+  // })
 
   return(
     <div>

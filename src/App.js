@@ -13,7 +13,7 @@ const url = "http://localhost:3000/"
 
 export default class App extends Component {
   constructor() {
-    super();
+    super()
 
     this.state = {
       resources: undefined,
@@ -21,14 +21,16 @@ export default class App extends Component {
     }
   }
 
-  ComponentDidMount = () => {
+  componentDidMount = () => {
     this.fetchData();
   }
 
   fetchData = () => {
+    // this.setState({...this.state, isFetching: true})
     fetch(url + "resources")
       .then(response => response.json())
       .then(result => this.setState({resources: result}))
+      .then(console.log(this.state.resources))
       .catch(error => console.error(error))
     fetch(url + "hymns")
       .then(response => response.json())
@@ -37,7 +39,7 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(this.state.resources ? this.state.resources : "unavailable")
+    console.log(this.state)
     return (
       <div className="App">
         <Router>
