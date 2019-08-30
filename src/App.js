@@ -26,11 +26,9 @@ export default class App extends Component {
   }
 
   fetchData = () => {
-    // this.setState({...this.state, isFetching: true})
     fetch(url + "resources")
       .then(response => response.json())
       .then(result => this.setState({resources: result}))
-      .then(console.log(this.state.resources))
       .catch(error => console.error(error))
     fetch(url + "hymns")
       .then(response => response.json())
@@ -39,17 +37,16 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="App">
         <Router>
           <Header />
           <Switch className="pages">
             <Route path="/home" exact component={Home} />
-            <Route path="/hymns" exact component={this.state.resources ? (props) => <HymnList {...props}
+            <Route path="/hymns" exact component={this.state.hymns ? (props) => <HymnList {...props}
               hymns={this.state.hymns} /> : ""
             } />
-            <Route path="/hymns/:id" component={this.state.resources ? (props) => <HymnList {...props}
+            <Route path="/hymns/:id" component={this.state.hymns ? (props) => <HymnList {...props}
               hymns={this.state.hymns} /> : ""
             } />
             <Route path="/resources" component={this.state.resources ? (props) => <Resources {...props}
