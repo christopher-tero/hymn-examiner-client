@@ -17,7 +17,6 @@ export default function HymnCardList(props) {
 
   return(
     <div className="hymn-card">
-      <p>Card Test</p>
       {hymns}
     </div>
   )
