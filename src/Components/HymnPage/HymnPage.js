@@ -10,6 +10,7 @@ export default class Hymn extends Component {
   }
 
   componentDidMount = () => {
+    console.log(this.props.location.state)
     const {hymn} = this.props.location.state
     this.setState(() => ({hymn: hymn}))
   }
@@ -36,8 +37,8 @@ export default class Hymn extends Component {
     return(
       <div>
       <p>Hymn Test</p>
-      <h4>Title: {this.state.title}</h4>
-      <p>Description: {this.state.description}</p>
+      <h4>Title: {this.props.title}</h4>
+      <p>Description: {this.props.description}</p>
       <p>Story: {this.state.story}</p>
       <p>Editor Rating: {this.state.editorRating}</p>
       <p>Editor Review: {this.state.editorReview}</p>

@@ -46,7 +46,7 @@ export default class App extends Component {
             <Route path="/hymns" exact component={this.state.hymns ? (props) => <HymnList {...props}
               hymns={this.state.hymns} /> : ""
             } />
-            <Route path="/hymns/:id" component={this.state.hymns ? (props) => <HymnList {...props}
+            <Route path="/hymns/:id" component={this.state.hymns ? (props) => <HymnPage {...props}
               hymns={this.state.hymns} /> : ""
             } />
             <Route path="/resources" component={this.state.resources ? (props) => <Resources {...props}
